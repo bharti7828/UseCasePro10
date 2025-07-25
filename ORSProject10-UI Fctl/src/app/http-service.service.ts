@@ -32,9 +32,13 @@ export class HttpServiceService {
     return this.httpClient.get(endpoint, { withCredentials: true }).subscribe((data) => {
       console.log('Data :: ' + data);
       callback(data);
+            console.log('-------- get method Success callback Function------------');
+
 
     }, error => {
       console.log('ORS Error--', error);
+             console.log('-------- get method error callback Function------------');
+
       if (error.status === 401) {
 
         localStorage.clear();
@@ -52,9 +56,13 @@ export class HttpServiceService {
     return this.httpClient.post(endpoint, bean, { withCredentials: true }).subscribe((data) => {
       console.log(data);
       callback(data);
+             console.log('-------- post method Success callback Function------------');
+
 
     }, error => {
       console.log('ORS Error--', error);
+                   console.log('-------- post method error callback Function------------');
+
       if (error.status === 401) {
         localStorage.clear();
         this.router.navigate(['/login'], {
